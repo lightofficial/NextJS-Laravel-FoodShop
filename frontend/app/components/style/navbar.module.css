@@ -1,0 +1,43 @@
+/* Global CSS */
+.activeClass {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 0.75rem;
+	padding-right: 1rem;
+	color: #FFF;
+	background-color: #3b82f6;
+	border-radius: 0.25rem;
+  }
+  @media (min-width: 768px) {
+	.activeClass {
+	  background-color: transparent;
+	  color: #3b82f6;
+	  padding: 0;
+	}
+  }
+  
+  .inactiveClass {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 0.75rem;
+	padding-right: 1rem;
+	color: #FFF;
+	border-radius: 0.25rem;
+	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  .inactiveClass:hover {
+	background-color: #f3f4f6;
+	color: #3b82f6;
+  }
+  @media (min-width: 768px) {
+	.inactiveClass {
+	  background-color: transparent;
+	  color: #FFF;
+	  padding: 0;
+	}
+	.inactiveClass:hover {
+	  background-color: transparent;
+	  color: #3b82f6;
+	}
+  }
+  
