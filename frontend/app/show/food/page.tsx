@@ -3,14 +3,19 @@ import { useState , useEffect } from 'react'
 import Layouts from '../../components/Layout'
 import getFoodList from './api/getFoodList'
 import axiosInstance from '@/app/components/axiosInstance';
+import AddFood from '@/app/components/modal/AddFood';
 
 interface FoodItem {
 	id : number;
 	category : string;
 	name : string;
 }
-function page() {
+const page = () => {
 	const [foodItem , setFoodItem] = useState<FoodItem[]>([]);
+  const [showModal, setModalShow] = useState(false);
+  const toggleModal = () => {
+    setModalShow(!showModal);
+  }
 
 	useEffect(() => {
 		const getFoodList = async () => {
@@ -21,7 +26,6 @@ function page() {
 				console.log(err)
 			}
 		};
-
 		getFoodList();
 	} , []);
 
@@ -29,7 +33,8 @@ function page() {
 	<Layouts>
 
 		<div className='mt-10 mx-auto w-3/4'>
-		<button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">เพิ่มรายการอาหาร</button>
+		<button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={toggleModal}>เพิ่มรายการอาหาร</button>
+    <AddFood showModal={showModal} setShowModal={setModalShow} />
 
 		<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
